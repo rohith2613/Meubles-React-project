@@ -1,5 +1,5 @@
-import React from 'react'
-import { customFetch, formatPrice } from '../utils'
+import React, { useState } from 'react'
+import { customFetch, formatPrice, generateAmountOptions } from '../utils/index'
 import { Link, useLoaderData } from 'react-router-dom';
 
 
@@ -14,6 +14,13 @@ const SingleProduct = () => {
   const {product} = useLoaderData();
   const {image,title,price,description,colors,company} = product.attributes;
   const ruppesAmount = formatPrice(price);
+  const [productColor,setProductColor] = useState([0]);
+  const [amount , setAmount] = useState(1);
+
+const handleAmount = (e) =>{
+  setAmount(parseInt(e.target.value));
+}
+
   return (
     <section>
       <div className='text-md breadcrumbs'>
@@ -36,6 +43,29 @@ const SingleProduct = () => {
           <h4 className='text-xl text-neutral-content font-bold mt-2'>{company}</h4>
           <p className='mt-3 text-xl'>{ruppesAmount}</p>
           <p className='mt-3 leading-8'>{description}</p>
+          {/* COLORS */}
+          <div className='mt-6'>
+            <h1 className='text-md font-medium tracking-wider capitalize'>colors</h1>
+            <div>
+              {colors.map((color)=>{
+                return <button key={color} type='button' className={`badge w-6 h-6 mr-2 ${color === productColor && 'border-2 border-secondary'} `} style={{backgroundColor: color}} onClick={()=>setProductColor(color)}></button>
+              })}
+            </div>
+          </div>
+          {/* AMOUNT */}
+          <div className="form-control w-full max-w-xs">
+            <label className='label' htmlFor='amount'>
+              <h4 className='text-md font-medium tracking-wider capitalize'>amount</h4>
+            </label>
+            <select className='select select-secondary select-bordered select-md' id="amount" value={amount} onChange={handleAmount}>
+              {generateAmountOptions(10)}
+            </select>
+
+          </div>
+          {/* CART BUTTON */}
+          <div className="mt-10">
+            <button className='btn btn-secondary btn-md' onClick={()=> console.log("Added to cart")}>Add to Cart</button>
+          </div>
         </div>
       </div>
 
