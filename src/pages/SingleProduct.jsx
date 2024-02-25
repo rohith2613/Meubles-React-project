@@ -34,7 +34,7 @@ const handleAmount = (e) =>{
         </ul>
       </div>
       {/* PRODUCT */}
-      <div className='mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16'>
+      <div  className='mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16'>
         {/* IMAGE */}
         <img src={image} alt={title} className='w-96 h-96 object-cover rounded-lg lg:w-full' />
         {/* PRODUCT */}
@@ -48,7 +48,9 @@ const handleAmount = (e) =>{
             <h1 className='text-md font-medium tracking-wider capitalize'>colors</h1>
             <div>
               {colors.map((color)=>{
-                return <button key={color} type='button' className={`badge w-6 h-6 mr-2 ${color === productColor && 'border-2 border-secondary'} `} style={{backgroundColor: color}} onClick={()=>setProductColor(color)}></button>
+                return (
+                <button key={color} type='button' className={`badge w-6 h-6 mr-2 ${color === productColor && 'border-2 border-secondary'} `} style={{backgroundColor: color}} onClick={()=>setProductColor(color)}></button>
+              );
               })}
             </div>
           </div>
