@@ -3,7 +3,7 @@ import React from 'react'
 const About = () => {
   return (
     <>
-    <div className="flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center">
+    <div className="h-44 flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center">
       <h1 className='text-4xl font-bold leading-none tracking-tighter sm:text-6xl'>We Love</h1>
       <div className="stats bg-primary shadow">
         <div className='stat'>

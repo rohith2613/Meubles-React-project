@@ -5,6 +5,7 @@ import NavLinks from './NavLinks';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../features/user/userSlice';
+import Logo from '../assets/letter-m.png'
 
 const Navbar = () => {
   const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
@@ -20,9 +21,9 @@ const Navbar = () => {
           {/* Title */}
           <NavLink
             to='/'
-            className='hidden lg:flex btn btn-primary text-3xl items-center '
+            className='hidden lg:flex btn  text-3xl items-center '
           >
-            C
+            <img className='h-8' src={Logo} alt="Logo" />
           </NavLink>
           {/* DROPDOWN */}
           <div className='dropdown'>
